@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>For my baby pretty</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500&display=swap" rel="stylesheet">
+</head>
+<body>
+  <!-- Background Music -->
+  <audio id="bg-music" src="music.mp3" autoplay loop hidden></audio>
+
+  <div class="book">
+
+    <!-- Page 1 -->
+    <div class="page fade" id="page1">
+      <img src="page1.jpg" alt="Page 1">
+      <div class="caption">
+        <h2>hi, my baby</h2>
+        <p>Tap the heart for me</p>
+        <button onclick="nextPage()">♥</button>
+      </div>
+    </div>
+
+    <!-- Page 2 -->
+    <div class="page fade" id="page2">
+      <img src="page2.jpg" alt="Page 2">
+      <div class="caption">
+        <button onclick="nextPage()">♥</button>
+      </div>
+    </div>
+
+    <!-- Page 3 -->
+    <div class="page fade" id="page3">
+      <img src="page3.jpg" alt="Page 3">
+      <div class="caption">
+        <button onclick="nextPage()">♥</button>
+      </div>
+    </div>
+
+    <!-- Page 4 -->
+    <div class="page fade" id="page4">
+      <img src="page4.jpg" alt="Page 4">
+      <div class="caption">
+        <button onclick="nextPage()">♥</button>
+      </div>
+    </div>
+
+    <!-- Page 5 -->
+    <div class="page fade" id="page5">
+      <img src="page5.jpg" alt="Page 5">
+      <div class="caption">
+        <p>I love you. ❤</p>
+      </div>
+    </div>
+
+  </div>
+
+  <script>
+    let currentPage = 1;
+    const totalPages = 5;
+    const music = document.getElementById("bg-music");
+
+    function showPage(n) {
+      for (let i = 1; i <= totalPages; i++) {
+        const page = document.getElementById("page" + i);
+        page.style.display = (i === n) ? "block" : "none";
+      }
+    }
+
+    function nextPage() {
+    // Start music on first click
+    if (music.paused) {
+      music.play().catch((e) => {
+        console.log("Music autoplay blocked:", e);
+      });
+    }
+    
+    if (currentPage < totalPages) {
+      currentPage++;
+      showPage(currentPage);
+      }
+    }
+
+    window.onload = () => {
+    showPage(currentPage);
+    music.volume = 0.2;
+  };
+</script>
+  </script>
+</body>
+</html>
